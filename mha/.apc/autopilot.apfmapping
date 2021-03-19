@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="softmax.h" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\softmax.h"/>
+    <originFiles name="main.h" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\main.h"/>
+    <originFiles name="main.cpp" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\main.cpp"/>
+    <originFiles name="linear.h" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\linear.h"/>
+    <originFiles name="dropout.h" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\dropout.h"/>
+    <originFiles name="attention.h" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\attention.h"/>
+  </source>
+  <testbench>
+    <originFiles name="main_tb.cpp" path="C:\Users\dianhsu\Desktop\Workspace\MultiHeadAttention\main_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
