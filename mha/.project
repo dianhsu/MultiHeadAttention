@@ -52,6 +52,11 @@
 			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution3/.tcls</location>
 		</link>
 		<link>
+			<name>solution4/constraints</name>
+			<type>2</type>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/.tcls</location>
+		</link>
+		<link>
 			<name>source/attention.h</name>
 			<type>1</type>
 			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/attention.h</location>
@@ -130,6 +135,21 @@
 			<name>solution3/constraints/script.tcl</name>
 			<type>1</type>
 			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution3/script.tcl</location>
+		</link>
+		<link>
+			<name>solution4/constraints/.xml.directive</name>
+			<type>1</type>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/solution4.directive</location>
+		</link>
+		<link>
+			<name>solution4/constraints/directives.tcl</name>
+			<type>1</type>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/directives.tcl</location>
+		</link>
+		<link>
+			<name>solution4/constraints/script.tcl</name>
+			<type>1</type>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/script.tcl</location>
 		</link>
 	</linkedResources>
 </projectDescription>

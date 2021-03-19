@@ -60,8 +60,6 @@
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/win64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention"/>
                                     								
                                 </option>
                                 								
@@ -96,8 +94,6 @@
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/win64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention"/>
                                     								
                                 </option>
                                 								
@@ -193,7 +189,7 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding=".apc|.settings|solution1|solution2|solution3|*.c*|*.C*" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                        <entry excluding=".apc|.settings|solution1|solution2|solution3|solution4|*.c*|*.C*" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
                         					
                     </sourceEntries>
                     				
@@ -262,8 +258,6 @@
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/win64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention"/>
                                     								
                                 </option>
                                 								
@@ -288,8 +282,6 @@
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="C:/Xilinx/Vitis_HLS/2020.2/win64/tools/auto_cc/include"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention"/>
                                     								
                                 </option>
                                 								
@@ -375,7 +367,7 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding=".apc|.settings|solution1|solution2|solution3|*.c*|*.C*" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                        <entry excluding=".apc|.settings|solution1|solution2|solution3|solution4|*.c*|*.C*" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
                         					
                     </sourceEntries>
                     				

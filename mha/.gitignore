@@ -1,2 +1,4 @@
 solution*/*
 !solution*/*.tcl
+!solution*/solution*.aps
+!solution*/solution*.directive
