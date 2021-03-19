@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>mha</name>
+	<name>Multi_Head_Attention</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -29,32 +29,27 @@
 		<link>
 			<name>source</name>
 			<type>2</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/.apc/.src</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/.apc/.src</location>
 		</link>
 		<link>
 			<name>testbench</name>
 			<type>2</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/.apc/.tb</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/.apc/.tb</location>
 		</link>
 		<link>
 			<name>solution1/constraints</name>
 			<type>2</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution1/.tcls</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution1/.tcls</location>
 		</link>
 		<link>
 			<name>solution2/constraints</name>
 			<type>2</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution2/.tcls</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution2/.tcls</location>
 		</link>
 		<link>
 			<name>solution3/constraints</name>
 			<type>2</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution3/.tcls</location>
-		</link>
-		<link>
-			<name>solution4/constraints</name>
-			<type>2</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/.tcls</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution3/.tcls</location>
 		</link>
 		<link>
 			<name>source/attention.h</name>
@@ -94,62 +89,47 @@
 		<link>
 			<name>solution1/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution1/solution1.directive</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution1/solution1.directive</location>
 		</link>
 		<link>
 			<name>solution1/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution1/directives.tcl</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution1/directives.tcl</location>
 		</link>
 		<link>
 			<name>solution1/constraints/script.tcl</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution1/script.tcl</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution1/script.tcl</location>
 		</link>
 		<link>
 			<name>solution2/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution2/solution2.directive</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution2/solution2.directive</location>
 		</link>
 		<link>
 			<name>solution2/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution2/directives.tcl</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution2/directives.tcl</location>
 		</link>
 		<link>
 			<name>solution2/constraints/script.tcl</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution2/script.tcl</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution2/script.tcl</location>
 		</link>
 		<link>
 			<name>solution3/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution3/solution3.directive</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution3/solution3.directive</location>
 		</link>
 		<link>
 			<name>solution3/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution3/directives.tcl</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution3/directives.tcl</location>
 		</link>
 		<link>
 			<name>solution3/constraints/script.tcl</name>
 			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution3/script.tcl</location>
-		</link>
-		<link>
-			<name>solution4/constraints/.xml.directive</name>
-			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/solution4.directive</location>
-		</link>
-		<link>
-			<name>solution4/constraints/directives.tcl</name>
-			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/directives.tcl</location>
-		</link>
-		<link>
-			<name>solution4/constraints/script.tcl</name>
-			<type>1</type>
-			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/mha/solution4/script.tcl</location>
+			<location>C:/Users/dianhsu/Desktop/Workspace/MultiHeadAttention/Multi_Head_Attention/solution3/script.tcl</location>
 		</link>
 	</linkedResources>
 </projectDescription>
