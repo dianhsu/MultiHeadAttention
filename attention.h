@@ -28,6 +28,7 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 	T k_tmp[SEQ][DIM];
 	T v_tmp[SEQ][DIM];
 	T q_tmp_1[SEQ][DIM];
+	T nex_tmp[SEQ][SEQ];
 	SDSAF_BLOCK0: {
 		linearForward<T, DIM, DIM, SEQ>(Q_pl, q_tmp);
 		linearForward<T, DIM, DIM, SEQ>(K_pl, k_tmp);
@@ -35,16 +36,19 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		SDSAF_LOOP0: for (int i = 0; i < SEQ; ++i) {
 			//dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
 			SDSAF_LOOP1: for (int j = 0; j < DIM; ++j) {
-				q_tmp_1[i][j] *= scale;
+				q_tmp_1[i][j] = q_tmp[i][j] * scale;
 			}
 		}
-	}
+		for(int i = 0; i < SEQ; ++i){
+			for(int j = 0; j < SEQ; ++j){
+				nex_tmp[i][j] = 0;
+			}
+		}
 
-	T nex_tmp[SEQ][SEQ];
-	SDSAF_LOOP2: for (int i = 0; i < SEQ; ++i) {
-		SDSAF_LOOP3: for (int j = 0; j < SEQ; ++j) {
-			nex_tmp[i][j] = 0;
-			SDSAF_LOOP4: for (int k = 0; k < DIM; ++k) {
+	}
+	SDSAF_LOOP4: for (int k = 0; k < DIM; ++k) {
+		SDSAF_LOOP2: for (int i = 0; i < SEQ; ++i) {
+			SDSAF_LOOP3: for (int j = 0; j < SEQ; ++j) {
 				nex_tmp[i][j] += q_tmp_1[i][k] * k_tmp[j][k];
 			}
 		}
