@@ -12,10 +12,10 @@ add_files main.cpp
 add_files main.h
 add_files softmax.h
 add_files -tb main_tb.cpp
-open_solution "solution1" -flow_target vivado
+open_solution "solution4" -flow_target vivado
 set_part {xczu9eg-ffvb1156-2-e}
 create_clock -period 10 -name default
-source "./directives1.tcl"
+source "./directives3.tcl"
 csim_design
 #csynth_design
 #cosim_design

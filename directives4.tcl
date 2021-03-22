@@ -35,7 +35,5 @@ set_directive_unroll "scaleDotSelfAttentionForward/SDSAF_LOOP7"
 set_directive_dataflow "multiHeadAttentionForward"
 set_directive_array_partition -type complete -dim 1 "linearForward" input_pl
 set_directive_array_partition -type complete -dim 1 "linearForward" output_pl
-set_directive_dataflow "multiHeadAttentionForward/MHAF_LOOP0"
 set_directive_unroll "softmaxForward/SF_LOOP9"
 set_directive_unroll "linearForward/LF_LOOP1"
-#set_directive_dataflow "linearForward"

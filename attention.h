@@ -33,7 +33,7 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		linearForward<T, DIM, DIM, SEQ>(K_pl, k_tmp);
 		linearForward<T, DIM, DIM, SEQ>(V_pl, v_tmp);
 		SDSAF_LOOP0: for (int i = 0; i < SEQ; ++i) {
-			dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
+			//dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
 			SDSAF_LOOP1: for (int j = 0; j < DIM; ++j) {
 				q_tmp_1[i][j] *= scale;
 			}

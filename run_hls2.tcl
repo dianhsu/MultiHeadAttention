@@ -11,12 +11,13 @@ add_files main.cpp
 add_files linear.h
 add_files dropout.h
 add_files attention.h
-add_files -tb main_tb.cpp -cflags "-Wno-unknown-pragmas" -csimflags "-Wno-unknown-pragmas"
+add_files -tb main_tb.cpp
 open_solution "solution2" -flow_target vivado
 set_part {xczu9eg-ffvb1156-2-e}
 create_clock -period 10 -name default
 source "./directives2.tcl"
 csim_design
-csynth_design
-cosim_design
-export_design -format ip_catalog
+#csynth_design
+#cosim_design
+#export_design -format ip_catalog
+exit
