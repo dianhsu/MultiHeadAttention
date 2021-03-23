@@ -17,8 +17,8 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 	T K_pl[SEQ][DIM];
 	T V_pl[SEQ][DIM];
 	T output_pl[SEQ][DIM];
-	for(int i = 0; i < SEQ; ++i){
-		for(int j = 0; j < DIM; ++j){
+	for (int i = 0; i < SEQ; ++i) {
+		for (int j = 0; j < DIM; ++j) {
 			Q_pl[i][j] = Q[i][j];
 			K_pl[i][j] = K[i][j];
 			V_pl[i][j] = V[i][j];
@@ -39,16 +39,12 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 				q_tmp_1[i][j] = q_tmp[i][j] * scale;
 			}
 		}
-		for(int i = 0; i < SEQ; ++i){
-			for(int j = 0; j < SEQ; ++j){
-				nex_tmp[i][j] = 0;
-			}
-		}
-
 	}
-	SDSAF_LOOP4: for (int k = 0; k < DIM; ++k) {
-		SDSAF_LOOP2: for (int i = 0; i < SEQ; ++i) {
-			SDSAF_LOOP3: for (int j = 0; j < SEQ; ++j) {
+
+	SDSAF_LOOP2: for (int i = 0; i < SEQ; ++i) {
+		SDSAF_LOOP3: for (int j = 0; j < SEQ; ++j) {
+			nex_tmp[i][j] = 0;
+			SDSAF_LOOP4: for (int k = 0; k < DIM; ++k) {
 				nex_tmp[i][j] += q_tmp_1[i][k] * k_tmp[j][k];
 			}
 		}
@@ -63,16 +59,15 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 			}
 		}
 	}
-	for(int i = 0; i < SEQ; ++i){
-		for(int j = 0; j < DIM; ++j){
+	for (int i = 0; i < SEQ; ++i) {
+		for (int j = 0; j < DIM; ++j) {
 			output[i][j] = output_pl[i][j];
 		}
 	}
 }
 template<typename T, int DIM, int SEQ, int HEAD_SIZE>
 void multiHeadAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
-		T (&V)[SEQ][DIM], T (&output)[SEQ][DIM],
-		T dr) {
+		T (&V)[SEQ][DIM], T (&output)[SEQ][DIM], T dr) {
 	T scale = 1.0 / sqrt((double) DIM * 1.0 / HEAD_SIZE);
 	T tmp[HEAD_SIZE][SEQ][DIM];
 	MHAF_LOOP0: for (int h = 0; h < HEAD_SIZE; ++h) {
