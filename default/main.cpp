@@ -3,6 +3,7 @@
 #include "attention.h"
 #include "linear.h"
 void project_top(data_t input[SEQ][DIM], data_t output[SEQ][DIM]) {
+#pragma HLS TOP name=project_top
 	data_t input_pl[SEQ][DIM];
 	data_t output_pl[SEQ][DIM];
 	memcpy(input_pl, input, sizeof(data_t) * SEQ * DIM);

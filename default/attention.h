@@ -33,6 +33,7 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		linearForward<T, DIM, DIM, SEQ>(K_pl, k_tmp);
 		linearForward<T, DIM, DIM, SEQ>(V_pl, v_tmp);
 		SDSAF_LOOP0: for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off
 			dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
 			SDSAF_LOOP1: for (int j = 0; j < DIM; ++j) {
 				q_tmp_1[i][j] *= scale;
@@ -42,7 +43,9 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 
 	T nex_tmp[SEQ][SEQ];
 	SDSAF_LOOP2: for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off
 		SDSAF_LOOP3: for (int j = 0; j < SEQ; ++j) {
+#pragma HLS PIPELINE off
 			nex_tmp[i][j] = 0;
 			SDSAF_LOOP4: for (int k = 0; k < DIM; ++k) {
 				nex_tmp[i][j] += q_tmp_1[i][k] * k_tmp[j][k];
@@ -52,7 +55,9 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 	T nex_tmp_2[SEQ][SEQ];
 	softmaxForward<T, SEQ, SEQ>(nex_tmp, nex_tmp_2);
 	SDSAF_LOOP5: for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off
 		SDSAF_LOOP6: for (int j = 0; j < DIM; ++j) {
+#pragma HLS PIPELINE off
 			output_pl[i][j] = 0;
 			SDSAF_LOOP7: for (int k = 0; k < SEQ; ++k) {
 				output_pl[i][j] += nex_tmp_2[i][k] * v_tmp[k][j];
