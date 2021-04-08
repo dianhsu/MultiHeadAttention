@@ -31,17 +31,9 @@ void singleLinearForward(T (&input)[DIM_IN], T (&output)[DIM_OUT]) {
 
 template<typename T, int DIM_IN, int DIM_OUT, int SEQ>
 void linearForward(T (&input)[SEQ][DIM_IN], T (&output)[SEQ][DIM_OUT]) {
-	T input_pl[SEQ][DIM_IN];
-	T output_pl[SEQ][DIM_OUT];
-	LF_LOOP0:for (int i = 0; i < SEQ * DIM_IN; ++i) {
-		input_pl[i / DIM_IN][i % DIM_IN] = input[i / DIM_IN][i % DIM_IN];
-	}
-	LF_LOOP1:for (int q = 0; q < SEQ; ++q) {
+	LF_LOOP0:for (int q = 0; q < SEQ; ++q) {
 #pragma HLS PIPELINE off
-		singleLinearForward(input_pl[q], output_pl[q]);
-	}
-	LF_LOOP2:for (int i = 0; i < SEQ * DIM_OUT; ++i) {
-		output[i / DIM_OUT][i % DIM_OUT] = output_pl[i / DIM_OUT][i % DIM_OUT];
+		singleLinearForward(input[q], output[q]);
 	}
 }
 

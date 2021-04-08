@@ -13,25 +13,14 @@ struct MultiHeadAttentionParameter {
 template<typename T, int DIM, int SEQ>
 void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		T (&V)[SEQ][DIM], T (&output)[SEQ][DIM], T scale, T dr) {
-	T Q_pl[SEQ][DIM];
-	T K_pl[SEQ][DIM];
-	T V_pl[SEQ][DIM];
-	T output_pl[SEQ][DIM];
-	for(int i = 0; i < SEQ; ++i){
-		for(int j = 0; j < DIM; ++j){
-			Q_pl[i][j] = Q[i][j];
-			K_pl[i][j] = K[i][j];
-			V_pl[i][j] = V[i][j];
-		}
-	}
 	T q_tmp[SEQ][DIM];
 	T k_tmp[SEQ][DIM];
 	T v_tmp[SEQ][DIM];
 	T q_tmp_1[SEQ][DIM];
 	SDSAF_BLOCK0: {
-		linearForward<T, DIM, DIM, SEQ>(Q_pl, q_tmp);
-		linearForward<T, DIM, DIM, SEQ>(K_pl, k_tmp);
-		linearForward<T, DIM, DIM, SEQ>(V_pl, v_tmp);
+		linearForward<T, DIM, DIM, SEQ>(Q, q_tmp);
+		linearForward<T, DIM, DIM, SEQ>(K, k_tmp);
+		linearForward<T, DIM, DIM, SEQ>(V, v_tmp);
 		SDSAF_LOOP0: for (int i = 0; i < SEQ; ++i) {
 #pragma HLS PIPELINE off
 			dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
@@ -48,6 +37,7 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 #pragma HLS PIPELINE off
 			nex_tmp[i][j] = 0;
 			SDSAF_LOOP4: for (int k = 0; k < DIM; ++k) {
+#pragma HLS PIPELINE off
 				nex_tmp[i][j] += q_tmp_1[i][k] * k_tmp[j][k];
 			}
 		}
@@ -58,15 +48,11 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 #pragma HLS PIPELINE off
 		SDSAF_LOOP6: for (int j = 0; j < DIM; ++j) {
 #pragma HLS PIPELINE off
-			output_pl[i][j] = 0;
+			output[i][j] = 0;
 			SDSAF_LOOP7: for (int k = 0; k < SEQ; ++k) {
-				output_pl[i][j] += nex_tmp_2[i][k] * v_tmp[k][j];
+#pragma HLS PIPELINE off
+				output[i][j] += nex_tmp_2[i][k] * v_tmp[k][j];
 			}
-		}
-	}
-	for(int i = 0; i < SEQ; ++i){
-		for(int j = 0; j < DIM; ++j){
-			output[i][j] = output_pl[i][j];
 		}
 	}
 }
@@ -76,13 +62,18 @@ void multiHeadAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		T dr) {
 	T scale = 1.0 / sqrt((double) DIM * 1.0 / HEAD_SIZE);
 	T tmp[HEAD_SIZE][SEQ][DIM];
+
 	MHAF_LOOP0: for (int h = 0; h < HEAD_SIZE; ++h) {
+#pragma HLS PIPELINE off
 		scaleDotSelfAttentionForward<T, DIM, SEQ>(Q, K, V, tmp[h], scale, dr);
 	}
 	T fc_tmp[SEQ][DIM * HEAD_SIZE];
 	MHAF_LOOP1: for (int h = 0; h < HEAD_SIZE; ++h) {
+#pragma HLS PIPELINE off
 		MHAF_LOOP2: for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off
 			MHAF_LOOP3: for (int j = 0; j < DIM; ++j) {
+#pragma HLS PIPELINE off
 				fc_tmp[i][h * HEAD_SIZE + j] = tmp[h][i][j];
 			}
 		}
