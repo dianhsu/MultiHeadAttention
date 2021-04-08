@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "SDSAF"
+    ],
+    "cSpell.enableFiletypes": [
+        "!c"
     ]
 }
