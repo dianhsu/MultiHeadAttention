@@ -2,7 +2,7 @@
 #include "main.h"
 #include "attention.h"
 #include "linear.h"
-void project_top(data_t input[SEQ][DIM], data_t output[SEQ][DIM]) {
+void project_top(data_t (&input)[SEQ][DIM], data_t (&output)[SEQ][DIM]) {
 #pragma HLS TOP name=project_top
 	//MultiHeadAttentionParameter<data_t, DIM, HEAD_SIZE> param;
 	//multiHeadAttentionForward<data_t, DIM, SEQ, HEAD_SIZE>(input_pl, input_pl, input_pl, output_pl, param);

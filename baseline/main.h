@@ -8,6 +8,6 @@ typedef ap_fixed<8, 3, AP_RND, AP_SAT> data_t;
 const int SEQ = 20;
 const int DIM = 32;
 const int HEAD_SIZE = 8;
-void project_top(data_t input[SEQ][DIM], data_t output[SEQ][DIM]);
+void project_top(data_t (&input)[SEQ][DIM], data_t (&output)[SEQ][DIM]);
 
 #endif
