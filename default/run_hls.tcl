@@ -15,7 +15,6 @@ add_files -tb main_tb.cpp
 open_solution "default" -flow_target vivado
 set_part {xcvu19p-fsva3824-2-e}
 create_clock -period 10 -name default
-
 csim_design
 csynth_design
 #cosim_design
