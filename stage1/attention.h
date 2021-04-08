@@ -13,7 +13,6 @@ struct MultiHeadAttentionParameter {
 template<typename T, int DIM, int SEQ>
 void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		T (&V)[SEQ][DIM], T (&output)[SEQ][DIM], T scale, T dr) {
-#pragma HLS DATAFLOW
 	T Q_pl[SEQ][DIM];
 	T K_pl[SEQ][DIM];
 	T V_pl[SEQ][DIM];
@@ -76,8 +75,9 @@ void multiHeadAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 	T scale = 1.0 / sqrt((double) DIM * 1.0 / HEAD_SIZE);
 	T tmp[HEAD_SIZE][SEQ][DIM];
 #pragma HLS ARRAY_PARTITION variable=tmp dim=1 complete
+
 	MHAF_LOOP0: for (int h = 0; h < HEAD_SIZE; ++h) {
-#pragma HLS DATAFLOW
+#pragma HLS PIPELINE
 		scaleDotSelfAttentionForward<T, DIM, SEQ>(Q, K, V, tmp[h], scale, dr);
 	}
 	T fc_tmp[SEQ][DIM * HEAD_SIZE];

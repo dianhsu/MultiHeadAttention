@@ -17,7 +17,7 @@ set_part {xcvu19p-fsva3824-2-e}
 create_clock -period 10 -name default
 source "./directives.tcl"
 csim_design
-csynth_design
+#csynth_design
 #cosim_design
 #export_design -format ip_catalog
 exit
