@@ -23,12 +23,14 @@ void singleLinearForward(T (&input)[DIM_IN], T (&output)[DIM_OUT]) {
 		output_pl[j] = param.bias[j];
 	}
 	SLF_LOOP2: for (int i = 0; i < DIM_IN; ++i) {
+#pragma HLS PIPELINE
 		SLF_LOOP3: for (int j = 0; j < DIM_OUT; ++j) {
 #pragma HLS UNROLL
 			output_pl[j] += input_pl[i] * param.weights[i][j];
 		}
 	}
 	SLF_LOOP4: for (int j = 0; j < DIM_OUT; ++j) {
+#pragma HLS PIPELINE
 		output[j] = output_pl[j];
 	}
 }
