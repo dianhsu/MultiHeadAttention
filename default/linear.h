@@ -37,6 +37,7 @@ void linearForward(T (&input)[SEQ][DIM_IN], T (&output)[SEQ][DIM_OUT]) {
 		input_pl[i / DIM_IN][i % DIM_IN] = input[i / DIM_IN][i % DIM_IN];
 	}
 	LF_LOOP1:for (int q = 0; q < SEQ; ++q) {
+#pragma HLS PIPELINE off
 		singleLinearForward(input_pl[q], output_pl[q]);
 	}
 	LF_LOOP2:for (int i = 0; i < SEQ * DIM_OUT; ++i) {

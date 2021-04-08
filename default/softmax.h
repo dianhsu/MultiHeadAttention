@@ -15,6 +15,7 @@ void softmaxForward(T (&input)[SEQ][DIM], T (&output)[SEQ][DIM]) {
 		tmp[j] = 0;
 	}
 	SF_LOOP3: for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off
 		SF_LOOP4: for (int j = 0; j < DIM; ++j) {
 			tmp[j] += input_pl[i][j];
 		}
