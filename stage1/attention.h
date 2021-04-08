@@ -32,16 +32,13 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 	T q_tmp_1[SEQ][DIM];
 	T nex_tmp[SEQ][SEQ];
 #pragma HLS ARRAY_PARTITION variable=nex_tmp dim=1 complete
-	SDSAF_BLOCK0: {
-#pragma HLS DATAFLOW
-		linearForward<T, DIM, DIM, SEQ>(Q_pl, q_tmp);
-		linearForward<T, DIM, DIM, SEQ>(K_pl, k_tmp);
-		linearForward<T, DIM, DIM, SEQ>(V_pl, v_tmp);
-		SDSAF_LOOP0: for (int i = 0; i < SEQ; ++i) {
-			dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
-			SDSAF_LOOP1: for (int j = 0; j < DIM; ++j) {
-				q_tmp_1[i][j] = q_tmp[i][j] * scale;
-			}
+	linearForward<T, DIM, DIM, SEQ>(Q_pl, q_tmp);
+	linearForward<T, DIM, DIM, SEQ>(K_pl, k_tmp);
+	linearForward<T, DIM, DIM, SEQ>(V_pl, v_tmp);
+	SDSAF_LOOP0: for (int i = 0; i < SEQ; ++i) {
+		dropoutForward<T, DIM>(q_tmp[i], q_tmp_1[i], dr);
+		SDSAF_LOOP1: for (int j = 0; j < DIM; ++j) {
+			q_tmp_1[i][j] = q_tmp[i][j] * scale;
 		}
 	}
 
