@@ -35,20 +35,9 @@ void singleLinearForward(T (&input)[DIM_IN], T (&output)[DIM_OUT]) {
 
 template<typename T, int DIM_IN, int DIM_OUT, int SEQ>
 void linearForward(T (&input)[SEQ][DIM_IN], T (&output)[SEQ][DIM_OUT]) {
-    T input_pl[SEQ][DIM_IN];
-#pragma HLS ARRAY_PARTITION variable=input_pl dim=1 complete
-    T output_pl[SEQ][DIM_OUT];
-#pragma HLS ARRAY_PARTITION variable=output_pl dim=1 complete
-    for (int i = 0; i < SEQ * DIM_IN; ++i) {
-        input_pl[i / DIM_IN][i % DIM_IN] = input[i / DIM_IN][i % DIM_IN];
-    }
     for (int q = 0; q < SEQ; ++q) {
 #pragma HLS UNROLL
-        singleLinearForward(input_pl[q], output_pl[q]);
-    }
-    for (int i = 0; i < SEQ * DIM_OUT; ++i) {
-#pragma HLS UNROLL
-        output[i / DIM_OUT][i % DIM_OUT] = output_pl[i / DIM_OUT][i % DIM_OUT];
+        singleLinearForward<T, DIM_IN, DIM_OUT>(input[q], output[q]);
     }
 }
 
