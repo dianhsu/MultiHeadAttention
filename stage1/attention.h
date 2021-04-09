@@ -17,7 +17,7 @@ void scaleDotSelfAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
     T Q_pl[SEQ][DIM];
 #pragma HLS ARRAY_PARTITION variable=Q_pl dim=1 complete
     T K_pl[SEQ][DIM];
-#pragma HLS ARRAY_PARTITIION variable=K_pl dim=1 complete
+#pragma HLS ARRAY_PARTITION variable=K_pl dim=1 complete
     T V_pl[SEQ][DIM];
 #pragma HLS ARRAY_PARTITION variable=V_pl dim=1 complete
     T output_pl[SEQ][DIM];
