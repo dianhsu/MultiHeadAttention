@@ -3,7 +3,6 @@
 
 template<typename T, int DIM, int SEQ>
 void softmaxForward(T (&input)[SEQ][DIM], T (&output)[SEQ][DIM]) {
-#pragma HLS PIPELINE
     T input_pl[SEQ][DIM];
 #pragma HLS ARRAY_PARTITION variable=input_pl dim=1 complete
     T output_pl[SEQ][DIM];
@@ -20,6 +19,7 @@ void softmaxForward(T (&input)[SEQ][DIM], T (&output)[SEQ][DIM]) {
         tmp[j] = 0;
     }
     for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off        
         for (int j = 0; j < DIM; ++j) {
 #pragma HLS UNROLL
             tmp[j] += input_pl[i][j];
@@ -30,12 +30,13 @@ void softmaxForward(T (&input)[SEQ][DIM], T (&output)[SEQ][DIM]) {
         tmp[j] = 1/tmp[j];
     }
     for (int i = 0; i < SEQ; ++i) {
+#pragma HLS PIPELINE off        
         for (int j = 0; j < DIM; ++j) {
 #pragma HLS UNROLL
             output_pl[i][j] = input_pl[i][j] * tmp[j];
         }
     }
-    for (int i = 0; i < SEQ; ++i) {
+    for (int i = 0; i < SEQ; ++i) {        
         for (int j = 0; j < DIM; ++j) {
             output[i][j] = output_pl[i][j];
         }

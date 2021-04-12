@@ -89,11 +89,10 @@ void multiHeadAttentionForward(T (&Q)[SEQ][DIM], T (&K)[SEQ][DIM],
 		}
 	}
 	MHAF_LOOP0: for (int h = 0; h < HEAD_SIZE; ++h) {
-#pragma HLS DATAFLOW
 		scaleDotSelfAttentionForward<T, DIM, SEQ>(Q, K, V, tmp[h], scale, dr);
 		linearForward<T, DIM, DIM, SEQ>(tmp[h], tmp2[h]);
 	}
-
+	//scaleDotSelfAttentionForward<T, DIM, SEQ, HEAD_SIZE>(Q, K, V, tmp, scale, dr);
 	for (int i = 0; i < SEQ; ++i) {
 		for (int j = 0; j < DIM; ++j) {
 			for (int h = 0; h < HEAD_SIZE; ++h) {

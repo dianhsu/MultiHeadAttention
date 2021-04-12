@@ -23,6 +23,7 @@ void singleLinearForward(T (&input)[DIM_IN], T (&output)[DIM_OUT]) {
         output_pl[j] = param.bias[j];
     }
     for (int i = 0; i < DIM_IN; ++i) {
+#pragma HLS PIPELINE off
         for (int j = 0; j < DIM_OUT; ++j) {
 #pragma HLS UNROLL
             output_pl[j] += input_pl[i] * param.weights[i][j];
@@ -36,7 +37,7 @@ void singleLinearForward(T (&input)[DIM_IN], T (&output)[DIM_OUT]) {
 template<typename T, int DIM_IN, int DIM_OUT, int SEQ>
 void linearForward(T (&input)[SEQ][DIM_IN], T (&output)[SEQ][DIM_OUT]) {
     for (int q = 0; q < SEQ; ++q) {
-#pragma HLS UNROLL
+#pragma HLS PIPELINE off
         singleLinearForward<T, DIM_IN, DIM_OUT>(input[q], output[q]);
     }
 }
