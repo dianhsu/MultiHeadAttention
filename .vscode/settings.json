@@ -6,6 +6,7 @@
         "SLF"
     ],
     "cSpell.enableFiletypes": [
-        "!c"
+        "!c",
+        "!cpp"
     ]
 }

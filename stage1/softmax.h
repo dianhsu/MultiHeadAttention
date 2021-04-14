@@ -9,7 +9,6 @@ void softmaxForward(T (&input)[SEQ][DIM], T (&output)[SEQ][DIM]) {
 #pragma HLS ARRAY_PARTITION variable=output_pl dim=1 complete
     for (int i = 0; i < SEQ; ++i) {
         for (int j = 0; j < DIM; ++j) {
-#pragma HLS UNROLL
             input_pl[i][j] = input[i][j];
         }
     }
